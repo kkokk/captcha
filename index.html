@@ -45,9 +45,28 @@
 		.login-mask button:hover {
 			background: #409eff;
 		}
+		.remark{
+			position: absolute;
+			top: 10vh;
+			width: 100%;
+			color: white;
+			font-size: 16px;
+		}
+		.remark div {
+			width: 330px;
+			border-radius: 4px;
+			margin-left: calc(50% - 175px);
+			background: rgba(0, 0, 0, .3);
+			padding: 10px;
+		}
 	</style>
 </head>
 <body>
+	<div class="remark">
+		<div>
+			验证结果是随机的、验证成功后需要关闭重试
+		</div>
+	</div>
 	<div class="login">
 		<div class="login-mask">
 			<div>
