@@ -3,7 +3,7 @@
 #### 介绍
 滑块、旋转、点击等图片验证的前端js，引入一行js即可方便快捷使用
 
-可搭配仓库 [poster ](https://gitee.com/langlanglang/poster) 一起使用
+可搭配仓库 [poster ](https://github.com/kkokk/poster) 一起使用
 
 #### 安装教程
 
