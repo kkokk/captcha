@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>滑块验证DEMO</title>
+	<style type="text/css">
+		html, body {
+			padding: 0;
+			margin: 0;
+			background: #2d3a4b;
+		}
+		.login{
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			justify-content: center;
+		}
+		.login-mask {
+			width: 350px;
+			height: 300px;
+			background: rgba(0, 0, 0, 0.3);
+			border-radius: 8px;
+			margin: 0 auto;
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			justify-content: center;
+			color: white;
+		}
+		.login-mask div {
+			text-align: center;
+		}
+		.login-mask button {
+			border: none;
+			width: 120px;
+			height: 31px;
+			border-radius: 31px;
+			background: #109eff;
+			color: white;
+			cursor: pointer;
+		}
+		.login-mask button:hover {
+			background: #409eff;
+		}
+	</style>
+</head>
+<body>
+	<div class="login">
+		<div class="login-mask">
+			<div>
+				<h1>滑块验证DEMO</h1>
+				<button type="button" onclick="captcha()">滑 块 验 证</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="./slider/slider.js"></script>
+<script type="text/javascript">
+// 验证方法
+function captcha(){
+	// 根据 poster 获取验证参数
+	var res = {
+		title: '', 
+		sliderBg: './slider/img/slider.png', 
+		sliderKey: '1212', 
+		sliderY: 46
+	};
+	sliderStart(res, 
+	function(sliderKey, sliderX, sliderSuccess, sliderError){
+		// sliderKey // 验证key
+		// sliderX // 验证x轴距离
+		// ...调用验证接口
+
+		// 模拟调用验证接口
+		const check = () => {
+			const success = Math.floor(Math.random() * 2 + 1)
+			if(success === 1){
+				// 成功调用该方法
+				sliderSuccess()
+			} else {
+				// 错误调用该方法
+				// 模拟调用获取验证参数接口
+				getSliderOption(sliderError)
+			}
+		}
+		setTimeout(function(){
+			check()
+		}, 1000)
+	},
+	function(refresh){
+		// 刷新
+		// ... 需要调用刷新接口 重新获取图片参数
+
+		// 模拟调用获取验证参数接口
+		setTimeout(function(){
+			getSliderOption(refresh)
+		}, 1000)
+
+	})
+}
+// 获取验证参数接口
+function getSliderOption(callback){
+	const res = {
+		sliderBg: './slider/img/slider.png', 
+		sliderKey: '1212', 
+		sliderY: 46
+	}
+	callback(res)
+}
+
+</script>
