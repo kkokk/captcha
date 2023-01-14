@@ -34,6 +34,12 @@
    <script type="text/javascript">
        function captcha(){
            // 根据 poster 获取验证参数
+           var res = {
+               title: '',
+               sliderBg: './slider/img/slider.png',
+               sliderKey: '1212',
+               sliderY: 46
+           };
            sliderStart(res, 
            function(sliderKey, sliderX, sliderSuccess, sliderError){
                // sliderKey // 验证key
@@ -79,7 +85,7 @@
        }
    </script>
    ```
-
+   
    
 
 #### 参与贡献
