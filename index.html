@@ -64,7 +64,7 @@
 <body>
 	<div class="remark">
 		<div>
-			验证结果是随机的、验证成功后需要关闭重试
+			滑块验证，将滑块滑到指定位置即可验证成功
 		</div>
 	</div>
 	<div class="login">
@@ -96,8 +96,9 @@ function captcha(){
 
 		// 模拟调用验证接口
 		const check = () => {
-			const success = Math.floor(Math.random() * 2 + 1)
-			if(success === 1){
+			const leeway = 5 // 误差值
+			const value = 208 // 正确值
+			if(value >= (sliderX - leeway) && value <= (sliderX + leeway)){
 				// 成功调用该方法
 				sliderSuccess()
 			} else {
