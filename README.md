@@ -5,6 +5,10 @@
 
 可搭配仓库 [poster ](https://github.com/kkokk/poster) 一起使用
 
+lang 732853989@qq.com
+
+[点击链接加入群聊【海报图片验证交流群】](https://jq.qq.com/?_wv=1027&k=k374FhrR)
+
 [滑块前端演示 kkokk.github.io/captcha/](https://kkokk.github.io/captcha/ "滑块前端演示")
 
 #### 安装教程
