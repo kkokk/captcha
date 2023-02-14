@@ -5,6 +5,8 @@
 
 可搭配仓库 [poster ](https://github.com/kkokk/poster) 一起使用
 
+[滑块前端演示 kkokk.github.io/captcha/](https://kkokk.github.io/captcha/ "滑块前端演示")
+
 #### 安装教程
 
 1. 直接引入js 
