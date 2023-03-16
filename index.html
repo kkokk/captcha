@@ -94,11 +94,13 @@ function captcha(){
 			// 	sliderY: res.y,
 			// })
 
-			Slider.sliderStart({
-				sliderBg: './slider/img/slider.png', 
-				sliderKey: '1212', 
-				sliderY: 46
-			})
+			setTimeout(function(){
+				Slider.sliderStart({
+					sliderBg: './slider/img/slider.png', 
+					sliderKey: '1212', 
+					sliderY: 46
+				})
+			}, 1000);
 		},
 		check: async function(sliderKey, sliderX, Slider) {
 
@@ -135,11 +137,13 @@ function captcha(){
 				} else {
 					// 错误调用该方法
 					// 模拟调用获取验证参数接口
-					Slider.sliderError({
-						sliderBg: './slider/img/slider.png', 
-						sliderKey: '1212', 
-						sliderY: 46
-					})
+					setTimeout(function(){
+						Slider.sliderError({
+							sliderBg: './slider/img/slider.png', 
+							sliderKey: '1212', 
+							sliderY: 46
+						})
+					}, 1000);
 				}
 			}
 
@@ -156,11 +160,13 @@ function captcha(){
 			// 	sliderY: res.y,
 			// })
 
-			Slider.sliderRefresh({
-				sliderBg: './slider/img/slider.png', 
-				sliderKey: '1212', 
-				sliderY: 46
-			})
+			setTimeout(function(){
+				Slider.sliderRefresh({
+					sliderBg: './slider/img/slider.png', 
+					sliderKey: '1212', 
+					sliderY: 46
+				})
+			}, 1000);
 		},
 	})
 }
