@@ -77,59 +77,142 @@
 	</div>
 </body>
 </html>
-<script type="text/javascript" src="./slider/slider.js"></script>
+<script type="text/javascript" src="./slider/slider-min.js"></script>
 <script type="text/javascript">
-// 验证方法
+// 开始验证
 function captcha(){
 	// 根据 poster 获取验证参数
-	var res = {
-		title: '', 
-		sliderBg: './slider/img/slider.png', 
-		sliderKey: '1212', 
-		sliderY: 46
-	};
-	sliderStart(res, 
-	function(sliderKey, sliderX, sliderSuccess, sliderError){
-		// sliderKey // 验证key
-		// sliderX // 验证x轴距离
-		// ...调用验证接口
+	// 以下注释为请求接口返回数据，可自行替换自己的请求方法是
+	Slider = new langSlider({
+		title: '滑块安全验证', 
+		start: async function(Slider) {
+			// 请求滑块参数
+			// const res = await getSlider()
+			// Slider.sliderStart({
+			// 	sliderBg: res.img, 
+			// 	sliderKey: res.key, 
+			// 	sliderY: res.y,
+			// })
 
-		// 模拟调用验证接口
-		const check = () => {
-			const leeway = 5 // 误差值
-			const value = 208 // 正确值
-			if(value >= (sliderX - leeway) && value <= (sliderX + leeway)){
-				// 成功调用该方法
-				sliderSuccess()
-			} else {
-				// 错误调用该方法
-				// 模拟调用获取验证参数接口
-				getSliderOption(sliderError)
+			Slider.sliderStart({
+				sliderBg: './slider/img/slider.png', 
+				sliderKey: '1212', 
+				sliderY: 46
+			})
+		},
+		check: async function(sliderKey, sliderX, Slider) {
+
+			// await request({
+			// 	type:'post',
+			// 	url: 'http://localhost:8990/check',
+			// 	data: {key:sliderKey, x:sliderX},
+			// 	success: async function(res){
+			// 		if (res.code === 200) {
+			// 		    Slider.sliderSuccess()
+			// 		} else {
+			// 			// 错误调用该方法
+			// 			// 模拟调用获取验证参数接口
+			// 			const res = await getSlider()
+			// 			Slider.sliderError({
+			// 				sliderBg: res.img, 
+			// 				sliderKey: res.key, 
+			// 				sliderY: res.y,
+			// 			})
+			// 		}
+			// 	},
+			// 	error: function(err) {
+			// 		console.log(err)
+			// 	}
+			// })
+
+			// 模拟调用验证接口
+			const check = () => {
+				const leeway = 5 // 误差值
+				const value = 208 // 正确值
+				if(value >= (sliderX - leeway) && value <= (sliderX + leeway)){
+					// 成功调用该方法
+					Slider.sliderSuccess()
+				} else {
+					// 错误调用该方法
+					// 模拟调用获取验证参数接口
+					Slider.sliderError({
+						sliderBg: './slider/img/slider.png', 
+						sliderKey: '1212', 
+						sliderY: 46
+					})
+				}
 			}
-		}
-		setTimeout(function(){
-			check()
-		}, 1000)
-	},
-	function(refresh){
-		// 刷新
-		// ... 需要调用刷新接口 重新获取图片参数
 
-		// 模拟调用获取验证参数接口
-		setTimeout(function(){
-			getSliderOption(refresh)
-		}, 1000)
+			setTimeout(function(){
+				check()
+			}, 1000)
 
+		},
+		refresh: async function(Slider){
+			// const res = await getSlider()
+			// Slider.sliderRefresh({
+			// 	sliderBg: res.img, 
+			// 	sliderKey: res.key, 
+			// 	sliderY: res.y,
+			// })
+
+			Slider.sliderRefresh({
+				sliderBg: './slider/img/slider.png', 
+				sliderKey: '1212', 
+				sliderY: 46
+			})
+		},
 	})
 }
-// 获取验证参数接口
-function getSliderOption(callback){
-	const res = {
-		sliderBg: './slider/img/slider.png', 
-		sliderKey: '1212', 
-		sliderY: 46
-	}
-	callback(res)
+
+// 获取滑块参数方法
+async function getSlider() {
+	var response
+	await request({
+		type:'get',
+		url: 'http://localhost:8990/poster',
+		success: async function(res){
+			if(res.code == 200){
+				response = res.data;
+			}
+		},
+		error: function(err) {
+			console.log(err)
+		}
+	})
+	return response
 }
 
+// 封装一个简单请求接口
+function request(obj) {
+	return new Promise(function (resolve, reject) {
+		var xhr = new XMLHttpRequest();
+
+		switch(obj.type) {
+			case 'get':
+				xhr.open('GET', obj.url, true);
+				xhr.onload = function() {
+					resolve(obj.success(JSON.parse(this.responseText)))
+				};
+				xhr.onError= function () {
+		            reject(obj.error({
+		                status: this.status,
+		                statusText: xhr.statusText
+		            }));
+		        };
+				break;
+			case 'post':
+				xhr.open('POST', obj.url, true);
+				xhr.setRequestHeader('Content-Type', 'application/json');
+				xhr.onreadystatechange = function() {
+				  if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+				    resolve(obj.success(JSON.parse(this.responseText)))
+				  }
+				};
+				break;
+		}
+		
+		xhr.send(JSON.stringify(obj.data));
+	});
+}
 </script>
