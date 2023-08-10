@@ -12,7 +12,7 @@ lang 732853989@qq.com
 群号 590660254 [点击链接加入群聊【海报图片验证交流群】](https://jq.qq.com/?_wv=1027&k=k374FhrR)
 
 #### 演示
-[滑块前端演示 http://langlanglang.gitee.io/captcha/](http://kkokk.github.io/captcha/ "滑块前端演示")
+[滑块前端演示 http://kkokk.github.io/captcha/](http://kkokk.github.io/captcha/ "滑块前端演示")
 
 
 #### 安装教程
