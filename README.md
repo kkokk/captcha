@@ -3,7 +3,7 @@
 #### 介绍
 滑块、旋转、点击等图片验证的前端js，引入一行js即可方便快捷使用
 
-可搭配仓库 [poster ](https://gitee.com/langlanglang/poster) 一起使用
+可搭配仓库 [poster ](https://github.com/kkokk/poster) 一起使用
 
 觉得不错的话，点个星星，谢谢大家
 
@@ -12,7 +12,7 @@ lang 732853989@qq.com
 群号 590660254 [点击链接加入群聊【海报图片验证交流群】](https://jq.qq.com/?_wv=1027&k=k374FhrR)
 
 #### 演示
-[滑块前端演示 http://langlanglang.gitee.io/captcha/](http://langlanglang.gitee.io/captcha/ "滑块前端演示")
+[滑块前端演示 http://langlanglang.gitee.io/captcha/](http://kkokk.github.io/captcha/ "滑块前端演示")
 
 
 #### 安装教程
